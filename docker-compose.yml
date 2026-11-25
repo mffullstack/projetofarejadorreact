@@ -1,0 +1,18 @@
+services:
+  projetofarejador:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: projetofarejador
+    image: projetofarejador:latest
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    stdin_open: true
+    tty: true
+    environment:
+      - VITE_HOST=0.0.0.0
